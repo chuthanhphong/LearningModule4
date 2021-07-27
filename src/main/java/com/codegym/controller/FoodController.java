@@ -9,12 +9,16 @@ import com.codegym.service.tag.ITagService;
 import com.codegym.service.type.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/foods")
@@ -57,6 +61,13 @@ public class FoodController {
 
     @PostMapping("/create")
     public String create(Food food, @RequestParam MultipartFile file){
+        String fileName= file.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(file.getBytes(),new File("/assets/image/"+fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        food.setImage(fileName);
         foodService.save(food);
         return "redirect:/foods";
     }
