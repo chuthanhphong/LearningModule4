@@ -3,7 +3,7 @@ package com.codegym.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name="role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,8 +13,7 @@ public class Role {
     public Role() {
     }
 
-    public Role(Long id, String name) {
-        this.id = id;
+    public Role( String name) {
         this.name = name;
     }
 

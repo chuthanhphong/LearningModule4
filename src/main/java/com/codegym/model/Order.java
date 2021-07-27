@@ -1,28 +1,28 @@
 package com.codegym.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table
+@Table(name = "order")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private LocalDateTime orderTime;
     private String receiverAddress;
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private User user;
+    private int status;
 
     public Order() {
     }
 
-    public Order(Long id, LocalDateTime orderTime, String receiverAddress, User user) {
-        this.id = id;
+    public Order(LocalDateTime orderTime, String receiverAddress, int status) {
         this.orderTime = orderTime;
         this.receiverAddress = receiverAddress;
-        this.user = user;
+        this.status = status;
     }
 
     public Long getId() {
@@ -49,11 +49,11 @@ public class Order {
         this.receiverAddress = receiverAddress;
     }
 
-    public User getUser() {
-        return user;
+    public int getStatus() {
+        return status;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -1,9 +1,10 @@
 package com.codegym.model;
 
+
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "discount")
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +15,7 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(Long id, String code, int usages) {
-        this.id = id;
+    public Discount(String code, int usages) {
         this.code = code;
         this.usages = usages;
     }

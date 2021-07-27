@@ -1,32 +1,33 @@
 package com.codegym.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
-@Table
+@Table(name="restaurant")
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String address;
-    private LocalDateTime openTime;
-    private LocalDateTime closeTime;
+    private LocalTime openTime;
+    private LocalTime closeTime;
     private String image;
+    private int rate;
     private int quantityRate;
     private int status;
 
     public Restaurant() {
     }
 
-    public Restaurant(Long id, String name, String address, LocalDateTime openTime, LocalDateTime closeTime, String image, int quantityRate, int status) {
-        this.id = id;
+    public Restaurant(String name, String address, LocalTime openTime, LocalTime closeTime, String image, int rate, int quantityRate, int status) {
         this.name = name;
         this.address = address;
         this.openTime = openTime;
         this.closeTime = closeTime;
         this.image = image;
+        this.rate = rate;
         this.quantityRate = quantityRate;
         this.status = status;
     }
@@ -55,19 +56,19 @@ public class Restaurant {
         this.address = address;
     }
 
-    public LocalDateTime getOpenTime() {
+    public LocalTime getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(LocalDateTime openTime) {
+    public void setOpenTime(LocalTime openTime) {
         this.openTime = openTime;
     }
 
-    public LocalDateTime getCloseTime() {
+    public LocalTime getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(LocalDateTime closeTime) {
+    public void setCloseTime(LocalTime closeTime) {
         this.closeTime = closeTime;
     }
 
@@ -77,6 +78,14 @@ public class Restaurant {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     public int getQuantityRate() {

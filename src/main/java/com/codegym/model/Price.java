@@ -17,8 +17,7 @@ public class Price {
     public Price() {
     }
 
-    public Price(Long id, int originPrice, int discountPrice, int serviceFee, String serviceDescription, String serviceType) {
-        this.id = id;
+    public Price( int originPrice, int discountPrice, int serviceFee, String serviceDescription, String serviceType) {
         this.originPrice = originPrice;
         this.discountPrice = discountPrice;
         this.serviceFee = serviceFee;

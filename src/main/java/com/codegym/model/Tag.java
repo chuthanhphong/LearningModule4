@@ -3,7 +3,7 @@ package com.codegym.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "tag")
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,7 @@ public class Tag {
     public Tag() {
     }
 
-    public Tag(Long id, String name, String slug, int quantityAdd, int quantityView) {
-        this.id = id;
+    public Tag(String name, String slug, int quantityAdd, int quantityView) {
         this.name = name;
         this.slug = slug;
         this.quantityAdd = quantityAdd;

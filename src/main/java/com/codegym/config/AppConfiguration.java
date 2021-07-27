@@ -1,5 +1,7 @@
 package com.codegym.config;
 
+import com.codegym.service.food.FoodService;
+import com.codegym.service.food.IFoodService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -45,15 +47,15 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext=applicationContext;
     }
-    //3 hàm tiếp theo cấu hình Thymleaf:
+
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views"); // tiền tố
+        templateResolver.setPrefix("/WEB-INF/views");
         templateResolver.setSuffix(".html"); // hậu tố
-        templateResolver.setTemplateMode(TemplateMode.HTML); // kiểu views
-        templateResolver.setCharacterEncoding("UTF-8"); // định dạng chữ
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
     @Bean
@@ -118,5 +120,10 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         ResourceBundleMessageSource messageSource=new ResourceBundleMessageSource();
         messageSource.setBasename("validation-message");
         return messageSource;
+    }
+
+    @Bean
+    public IFoodService foodService(){
+     return new FoodService();
     }
 }

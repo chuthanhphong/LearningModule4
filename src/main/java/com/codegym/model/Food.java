@@ -1,14 +1,13 @@
 package com.codegym.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table
+@Table(name = "food")
 public class Food {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
     private String image;
@@ -17,32 +16,28 @@ public class Food {
     private int quantityView;
     private int quantityOrder;
     private int preference;
-    private LocalDate createDate;
-    private LocalDate modifiedDate;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
+
     @ManyToOne
-   @JoinColumn(name = "restautantId" )
-    private Restaurant restaurant;
-    @ManyToOne
-    @JoinColumn(name = "priceId" )
     private Price price;
 
     @ManyToOne
-    @JoinColumn(name = "tagId")
     private Tag tag;
 
     @ManyToOne
-    @JoinColumn(name = "discountId" )
     private Discount discount;
 
     @ManyToOne
-    @JoinColumn(name = "typeId")
     private Type type;
+
+    @ManyToOne
+    private Restaurant restaurant;
 
     public Food() {
     }
 
-    public Food(Long id, String name, String image, String note, int preparedTime, int quantityView, int quantityOrder, int preference, LocalDate createDate, LocalDate modifiedDate, Restaurant restaurant, Price price, Tag tag, Discount discount, Type type) {
-        this.id = id;
+    public Food(String name, String image, String note, int preparedTime, int quantityView, int quantityOrder, int preference, LocalDateTime createdDate, LocalDateTime modifiedDate, Price price, Tag tag, Discount discount, Type type, Restaurant restaurant) {
         this.name = name;
         this.image = image;
         this.note = note;
@@ -50,13 +45,13 @@ public class Food {
         this.quantityView = quantityView;
         this.quantityOrder = quantityOrder;
         this.preference = preference;
-        this.createDate = createDate;
+        this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-        this.restaurant = restaurant;
         this.price = price;
         this.tag = tag;
         this.discount = discount;
         this.type = type;
+        this.restaurant = restaurant;
     }
 
     public Long getId() {
@@ -123,28 +118,20 @@ public class Food {
         this.preference = preference;
     }
 
-    public LocalDate getCreateDate() {
-        return createDate;
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateDate(LocalDate createDate) {
-        this.createDate = createDate;
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public LocalDate getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 
     public Price getPrice() {
@@ -177,5 +164,13 @@ public class Food {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }
