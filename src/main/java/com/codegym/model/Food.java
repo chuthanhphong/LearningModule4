@@ -37,6 +37,23 @@ public class Food {
     public Food() {
     }
 
+    public Food(String name, String image, String note, int preparedTime, LocalDateTime createdDate, LocalDateTime modifiedDate, Price price, Tag tag, Discount discount, Type type, Restaurant restaurant) {
+        this.name = name;
+        this.image = image;
+        this.note = note;
+        this.preparedTime = preparedTime;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.price = price;
+        this.tag = tag;
+        this.discount = discount;
+        this.type = type;
+        this.restaurant = restaurant;
+        this.quantityView = 0;
+        this.quantityOrder = 0;
+        this.preference = 0;
+    }
+
     public Food(String name, String image, String note, int preparedTime, int quantityView, int quantityOrder, int preference, LocalDateTime createdDate, LocalDateTime modifiedDate, Price price, Tag tag, Discount discount, Type type, Restaurant restaurant) {
         this.name = name;
         this.image = image;
