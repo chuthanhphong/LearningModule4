@@ -1,5 +1,7 @@
 package com.codegym.config;
 
+import com.codegym.service.User.IUserService;
+import com.codegym.service.User.UserService;
 import com.codegym.service.discount.DiscountService;
 import com.codegym.service.discount.IDiscountService;
 import com.codegym.service.food.FoodService;
@@ -179,5 +181,9 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Bean
     public ITypeService typeService(){
         return new TypeService();
+    }
+    @Bean
+    public IUserService userService(){
+        return new UserService();
     }
 }
