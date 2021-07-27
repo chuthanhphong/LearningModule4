@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit tag</title>
+</head>
+<body>
+<h1>Edit tag</h1>
+<a href="/type">list type</a>
+<form th:action="@{/edit-type}" th:object="${type}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td> name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+            <td></td>
+            <td><input type="submit" value="Update tag"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>html>
