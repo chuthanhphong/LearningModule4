@@ -2,6 +2,8 @@ package com.codegym.config;
 
 import com.codegym.service.food.FoodService;
 import com.codegym.service.food.IFoodService;
+import com.codegym.service.tag.ITagService;
+import com.codegym.service.tag.TagService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -125,5 +127,8 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Bean
     public IFoodService foodService(){
      return new FoodService();
+    }
+    @Bean
+    public ITagService tagService(){return  new TagService();
     }
 }
