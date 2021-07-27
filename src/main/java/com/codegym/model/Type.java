@@ -3,17 +3,17 @@ package com.codegym.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="role")
-public class Role {
+@Table(name = "type")
+public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    public Role() {
+    public Type() {
     }
 
-    public Role( String name) {
+    public Type(String name) {
         this.name = name;
     }
 
