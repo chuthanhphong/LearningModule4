@@ -64,3 +64,5 @@ com/codegym/config/AppConfiguration.java
  com.codegym.config.AppConfiguration
 com/codegym/controller/FoodController.java
  com.codegym.controller.FoodController
+com/codegym/controller/PriceController.java
+ com.codegym.controller.PriceController
