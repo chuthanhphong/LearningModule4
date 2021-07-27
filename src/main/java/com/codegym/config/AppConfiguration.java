@@ -1,13 +1,17 @@
 package com.codegym.config;
-import com.codegym.repository.IUserRoleRepository;
-import com.codegym.service.Role.IRoleService;
-import com.codegym.service.Role.RoleService;
-import com.codegym.service.User.IUserService;
-import com.codegym.service.User.UserService;
-import com.codegym.service.User_role.IUserRoleService;
-import com.codegym.service.User_role.User_RoleService;
+
+import com.codegym.service.discount.DiscountService;
+import com.codegym.service.discount.IDiscountService;
 import com.codegym.service.food.FoodService;
 import com.codegym.service.food.IFoodService;
+import com.codegym.service.price.IPriceService;
+import com.codegym.service.price.PriceService;
+import com.codegym.service.restaurant.IRestaurantService;
+import com.codegym.service.restaurant.RestaurantServive;
+import com.codegym.service.tag.ITagService;
+import com.codegym.service.tag.TagService;
+import com.codegym.service.type.ITypeService;
+import com.codegym.service.type.TypeService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -27,7 +31,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -37,6 +43,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -58,7 +65,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views");
+        templateResolver.setPrefix("/WEB-INF/views"); // tiền tố
         templateResolver.setSuffix(".html"); // hậu tố
         templateResolver.setTemplateMode(TemplateMode.HTML); // kiểu views
         templateResolver.setCharacterEncoding("UTF-8"); // định dạng chữ
@@ -120,6 +127,23 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return properties;
     }
 
+    //Cấu hình upload file
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(("/image/**")).addResourceLocations("/assets/image/");
+//        registry.addResourceHandler("/image/**")
+//                .addResourceLocations("file:" + "/File Upload/");
+
+    }
+
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver getResolver() throws IOException {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setMaxUploadSizePerFile(52428800);
+        return resolver;
+    }
+
     //Cấu hình messageSource
     @Bean
     public MessageSource messageSource(){
@@ -132,16 +156,28 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public IFoodService foodService(){
         return new FoodService();
     }
+
     @Bean
-    public IUserService userService(){
-        return new UserService();
+    public IRestaurantService restaurantService(){
+        return new RestaurantServive();
+    }
+
+    @Bean
+    public IPriceService priceService(){
+        return new PriceService();
+    }
+
+    @Bean
+    public ITagService tagService(){
+        return new TagService();
+    }
+
+    @Bean
+    public IDiscountService discountService(){
+        return new DiscountService();
     }
     @Bean
-    public IRoleService roleService(){
-        return new RoleService();
-    }
-    @Bean
-    public IUserRoleService userRoleService(){
-        return new User_RoleService();
+    public ITypeService typeService(){
+        return new TypeService();
     }
 }

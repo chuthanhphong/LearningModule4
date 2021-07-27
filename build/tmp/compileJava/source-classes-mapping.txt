@@ -1,5 +1,3 @@
-com/codegym/repository/IUserRoleRepository.java
- com.codegym.repository.IUserRoleRepository
 com/codegym/service/restaurant/RestaurantServive.java
  com.codegym.service.restaurant.RestaurantServive
 com/codegym/repository/ITypeRepository.java
@@ -8,14 +6,12 @@ com/codegym/model/Role.java
  com.codegym.model.Role
 com/codegym/service/price/IPriceService.java
  com.codegym.service.price.IPriceService
-com/codegym/model/OrderDetail.java
- com.codegym.model.OrderDetail
 com/codegym/service/restaurant/IRestaurantService.java
  com.codegym.service.restaurant.IRestaurantService
+com/codegym/model/OrderDetail.java
+ com.codegym.model.OrderDetail
 com/codegym/service/food/FoodService.java
  com.codegym.service.food.FoodService
-com/codegym/service/Role/RoleService.java
- com.codegym.service.Role.RoleService
 com/codegym/model/Price.java
  com.codegym.model.Price
 com/codegym/model/Food.java
@@ -30,34 +26,24 @@ com/codegym/service/IGeneralService.java
  com.codegym.service.IGeneralService
 com/codegym/service/type/ITypeService.java
  com.codegym.service.type.ITypeService
-com/codegym/service/User_role/IUserRoleService.java
- com.codegym.service.User_role.IUserRoleService
 com/codegym/service/food/IFoodService.java
  com.codegym.service.food.IFoodService
-com/codegym/config/AppConfiguration.java
- com.codegym.config.AppConfiguration
 com/codegym/repository/IRestaurantRepository.java
  com.codegym.repository.IRestaurantRepository
-com/codegym/repository/IUserRepository.java
- com.codegym.repository.IUserRepository
 com/codegym/service/tag/ITagService.java
  com.codegym.service.tag.ITagService
 com/codegym/service/type/TypeService.java
  com.codegym.service.type.TypeService
-com/codegym/service/User/UserService.java
- com.codegym.service.User.UserService
+com/codegym/config/AppConfiguration.java
+ com.codegym.config.AppConfiguration
 com/codegym/controller/FoodController.java
  com.codegym.controller.FoodController
-com/codegym/service/User/IUserService.java
- com.codegym.service.User.IUserService
 com/codegym/model/Discount.java
  com.codegym.model.Discount
 com/codegym/model/User.java
  com.codegym.model.User
 com/codegym/repository/IFoodRepository.java
  com.codegym.repository.IFoodRepository
-com/codegym/service/User_role/User_RoleService.java
- com.codegym.service.User_role.User_RoleService
 com/codegym/model/Tag.java
  com.codegym.model.Tag
 com/codegym/service/discount/DiscountService.java
@@ -68,21 +54,15 @@ com/codegym/model/Order.java
  com.codegym.model.Order
 com/codegym/model/Type.java
  com.codegym.model.Type
-com/codegym/repository/IRoleRepository.java
- com.codegym.repository.IRoleRepository
 com/codegym/repository/ITagRepository.java
  com.codegym.repository.ITagRepository
-com/codegym/repository/IPriceRepository.java
- com.codegym.repository.IPriceRepository
+com/codegym/config/AppInit.java
+ com.codegym.config.AppInit
 com/codegym/model/Restaurant.java
  com.codegym.model.Restaurant
 com/codegym/repository/IDiscountRepository.java
  com.codegym.repository.IDiscountRepository
-com/codegym/service/Role/IRoleService.java
- com.codegym.service.Role.IRoleService
-com/codegym/controller/User/UserController.java
- com.codegym.controller.User.UserController
-com/codegym/config/AppInit.java
- com.codegym.config.AppInit
-com/codegym/controller/User/HomeController.java
- com.codegym.controller.User.HomeController
+com/codegym/controller/PriceController.java
+ com.codegym.controller.PriceController
+com/codegym/repository/IPriceRepository.java
+ com.codegym.repository.IPriceRepository
