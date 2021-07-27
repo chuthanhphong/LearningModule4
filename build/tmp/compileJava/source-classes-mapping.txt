@@ -1,7 +1,9 @@
-com/codegym/repository/IPriceRepository.java
- com.codegym.repository.IPriceRepository
-com/codegym/repository/IUserRepository.java
- com.codegym.repository.IUserRepository
+com/codegym/service/tag/ITagService.java
+ com.codegym.service.tag.ITagService
+com/codegym/config/AppConfiguration.java
+ com.codegym.config.AppConfiguration
+com/codegym/controller/FoodController.java
+ com.codegym.controller.FoodController
 com/codegym/model/Role.java
  com.codegym.model.Role
 com/codegym/model/Discount.java
@@ -12,29 +14,31 @@ com/codegym/repository/IFoodRepository.java
  com.codegym.repository.IFoodRepository
 com/codegym/model/Tag.java
  com.codegym.model.Tag
+com/codegym/controller/TagController.java
+ com.codegym.controller.TagController
 com/codegym/model/OrderDetail.java
  com.codegym.model.OrderDetail
-com/codegym/model/User_role.java
- com.codegym.model.User_role
+com/codegym/service/tag/TagService.java
+ com.codegym.service.tag.TagService
 com/codegym/model/Order.java
  com.codegym.model.Order
 com/codegym/model/Price.java
  com.codegym.model.Price
 com/codegym/model/Type.java
  com.codegym.model.Type
-com/codegym/model/Food.java
- com.codegym.model.Food
+com/codegym/repository/ITagRepository.java
+ com.codegym.repository.ITagRepository
 com/codegym/config/AppInit.java
  com.codegym.config.AppInit
+com/codegym/model/Food.java
+ com.codegym.model.Food
 com/codegym/model/Restaurant.java
  com.codegym.model.Restaurant
-com/codegym/service/food/IGeneralService.java
- com.codegym.service.food.IGeneralService
-com/codegym/config/AppConfiguration.java
- com.codegym.config.AppConfiguration
-com/codegym/controller/FoodController.java
- com.codegym.controller.FoodController
-com/codegym/service/food/IFoodService.java
- com.codegym.service.food.IFoodService
-com/codegym/service/food/FoodService.java
- com.codegym.service.food.FoodService
+com/codegym/model/User_role.java
+ com.codegym.model.User_role
+com/codegym/service/IGeneralService.java
+ com.codegym.service.IGeneralService
+com/codegym/repository/IPriceRepository.java
+ com.codegym.repository.IPriceRepository
+com/codegym/repository/IUserRepository.java
+ com.codegym.repository.IUserRepository

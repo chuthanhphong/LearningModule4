@@ -1,7 +1,9 @@
 package com.codegym.config;
 
-import com.codegym.service.food.FoodService;
-import com.codegym.service.food.IFoodService;
+//import com.codegym.service.food.FoodService;
+//import com.codegym.service.food.IFoodService;
+import com.codegym.service.tag.ITagService;
+import com.codegym.service.tag.TagService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -32,7 +33,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 @Configuration
 @EnableWebMvc
@@ -45,7 +45,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+        this.applicationContext = applicationContext;
     }
 
     @Bean
@@ -58,12 +58,14 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
+
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
+
     @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -71,6 +73,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         viewResolver.setCharacterEncoding("UTF-8");// định dạng chữ
         return viewResolver;
     }
+
     //5 hàm tiếp theo cấu hình JPA
     @Bean
     @Qualifier(value = "entityManager")
@@ -116,14 +119,19 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
     //Cấu hình messageSource
     @Bean
-    public MessageSource messageSource(){
-        ResourceBundleMessageSource messageSource=new ResourceBundleMessageSource();
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("validation-message");
         return messageSource;
     }
+//
+//    @Bean
+//    public IFoodService foodService() {
+//        return new FoodService();
+//    }
 
     @Bean
-    public IFoodService foodService(){
-     return new FoodService();
+    public ITagService tagService(){
+        return new TagService();
     }
 }
