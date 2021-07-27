@@ -1,4 +1,4 @@
-package com.codegym.service.food;
+package com.codegym.service.food.food;
 
 import com.codegym.model.Food;
 import com.codegym.repository.IFoodRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class FoodService implements IFoodService{
+public class FoodService implements IFoodService {
 
     @Autowired
     IFoodRepository foodRepository;

@@ -1,6 +1,7 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Order;
 
 @Entity
 @Table(name="orderdetail")

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "order")
-public class Order {
+public class gOrder {
     @Id
     @GeneratedValue
     private Long id;
@@ -19,7 +19,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDateTime orderTime, String receiverAddress, int status) {
+    public void Order(LocalDateTime orderTime, String receiverAddress, int status) {
         this.orderTime = orderTime;
         this.receiverAddress = receiverAddress;
         this.status = status;
