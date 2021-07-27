@@ -1,7 +1,17 @@
 package com.codegym.config;
 
+import com.codegym.service.discount.DiscountService;
+import com.codegym.service.discount.IDiscountService;
 import com.codegym.service.food.FoodService;
 import com.codegym.service.food.IFoodService;
+import com.codegym.service.price.IPriceService;
+import com.codegym.service.price.PriceService;
+import com.codegym.service.restaurant.IRestaurantService;
+import com.codegym.service.restaurant.RestaurantServive;
+import com.codegym.service.tag.ITagService;
+import com.codegym.service.tag.TagService;
+import com.codegym.service.type.ITypeService;
+import com.codegym.service.type.TypeService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -125,5 +135,29 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Bean
     public IFoodService foodService(){
      return new FoodService();
+    }
+
+    @Bean
+    public IRestaurantService restaurantService(){
+     return new RestaurantServive();
+    }
+
+    @Bean
+    public IPriceService priceService(){
+        return new PriceService();
+    }
+
+    @Bean
+    public ITagService tagService(){
+        return new TagService();
+    }
+
+    @Bean
+    public IDiscountService discountService(){
+        return new DiscountService();
+    }
+    @Bean
+    public ITypeService typeService(){
+        return new TypeService();
     }
 }

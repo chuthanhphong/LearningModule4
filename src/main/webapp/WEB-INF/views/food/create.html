@@ -44,9 +44,34 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail8" class="form-label">Restaurant</label>
                     <select name="restaurant" id="exampleInputEmail8" class="form-control">
-                        <option value=""></option>
+                        <option th:each="restaurant:${restaurants}" th:value="${restaurant.id}" th:text="${restaurant.name}"></option>
                     </select>
-                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail9" class="form-label">Price</label>
+                    <a href="/prices/create">Add price</a>
+                    <input type="date" class="form-control" name="modifiedDate" id="exampleInputEmail9" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail10" class="form-label">Tag</label>
+                    <select name="tag" id="exampleInputEmail10" class="form-control">
+                        <option th:each="tag:${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail11" class="form-label">Price</label>
+                    <a href="/discount/create">Add discount </a>
+                    <input type="date" class="form-control" name="modifiedDate" id="exampleInputEmail11" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail12" class="form-label">Type</label>
+                    <select name="tag" id="exampleInputEmail12" class="form-control">
+                        <option th:each="type:${types}" th:value="${type.id}" th:text="${type.name}"></option>
+                    </select>
+                </div>
+
+
+
 
 
                 <button type="submit" class="btn btn-primary">Submit</button>
