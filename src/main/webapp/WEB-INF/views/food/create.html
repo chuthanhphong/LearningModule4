@@ -12,19 +12,42 @@
     <div class="row mt-3">
         <div th:replace="/layout::taskbar"></div>
         <div class="col-7 p-3" style="border: 1px solid; border-radius: 5px">
-            <form>
+            <form method="post" action="/foods/create" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail2" class="form-label">Image</label>
+                    <input type="file" class="form-control" name="file" id="exampleInputEmail2" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="exampleInputEmail3" class="form-label">Note</label>
+                    <input type="text" class="form-control" name="note" id="exampleInputEmail3" aria-describedby="emailHelp">
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail4" class="form-label">Prepared time (minutes)</label>
+                    <input type="number" class="form-control" name="preparedTime" id="exampleInputEmail4" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail5" class="form-label">Created date</label>
+                    <input type="date" class="form-control" name="createdDate" id="exampleInputEmail5" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail6" class="form-label">Modified date</label>
+                    <input type="date" class="form-control" name="modifiedDate" id="exampleInputEmail6" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail7" class="form-label">Modified date</label>
+                    <input type="date" class="form-control" name="modifiedDate" id="exampleInputEmail7" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail8" class="form-label">Restaurant</label>
+                    <select name="restaurant" id="exampleInputEmail8" class="form-control">
+                        <option value=""></option>
+                    </select>
+                    </div>
+
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
