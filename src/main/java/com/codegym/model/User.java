@@ -30,10 +30,14 @@ public class User {
     private String phoneNumber;
     private String avatar;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     public User() {
     }
 
-    public User(Long id, String userName, String password, String firstName, String lastName, String email, String address, String phoneNumber, String avatar) {
+    public User(Long id, String userName, String password, String firstName, String lastName, String email, String address, String phoneNumber, String avatar, Role role) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -43,6 +47,7 @@ public class User {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.avatar = avatar;
+        this.role = role;
     }
 
     public Long getId() {
@@ -115,5 +120,13 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

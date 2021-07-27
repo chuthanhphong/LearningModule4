@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="/layout::top"></div>
+    <div th:replace="/layout::menu"></div>
+    <div class="row mt-3">
+        <div th:replace="/layout::taskbar"></div>
+        <div class="col-7 p-3" style="border: 1px solid; border-radius: 5px">
+            <form method="post" action="/user/create" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail2" class="form-label">Address</label>
+                    <input type="file" class="form-control" name="address" id="exampleInputEmail2" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail3" class="form-label">FirstName</label>
+                    <input type="text" class="form-control" name="firstName" id="exampleInputEmail3" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail4" class="form-label">LastName</label>
+                    <input type="text" class="form-control" name="lastName" id="exampleInputEmail4" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail5" class="form-label">Password</label>
+                    <input type="text" class="form-control" name="createdDate" id="exampleInputEmail5" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail6" class="form-label">PhoneNumber</label>
+                    <input type="number" class="form-control" name="phoneNumber" id="exampleInputEmail6" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail7" class="form-label">UserName</label>
+                    <input type="text" class="form-control" name="userName" id="exampleInputEmail7" aria-describedby="emailHelp">
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+        </div>
+        <div th:replace="/layout::adv"></div>
+    </div>
+    <div th:replace="/layout::footer"></div>
+</div>
+
+</body>
+</html>

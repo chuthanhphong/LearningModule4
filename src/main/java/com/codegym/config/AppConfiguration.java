@@ -1,5 +1,11 @@
 package com.codegym.config;
-
+import com.codegym.repository.IUserRoleRepository;
+import com.codegym.service.Role.IRoleService;
+import com.codegym.service.Role.RoleService;
+import com.codegym.service.User.IUserService;
+import com.codegym.service.User.UserService;
+import com.codegym.service.User_role.IUserRoleService;
+import com.codegym.service.User_role.User_RoleService;
 import com.codegym.service.food.FoodService;
 import com.codegym.service.food.IFoodService;
 import org.springframework.beans.BeansException;
@@ -47,15 +53,15 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext=applicationContext;
     }
-
+    //3 hàm tiếp theo cấu hình Thymleaf:
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views");
         templateResolver.setSuffix(".html"); // hậu tố
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setTemplateMode(TemplateMode.HTML); // kiểu views
+        templateResolver.setCharacterEncoding("UTF-8"); // định dạng chữ
         return templateResolver;
     }
     @Bean
@@ -124,6 +130,18 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
     @Bean
     public IFoodService foodService(){
-     return new FoodService();
+        return new FoodService();
+    }
+    @Bean
+    public IUserService userService(){
+        return new UserService();
+    }
+    @Bean
+    public IRoleService roleService(){
+        return new RoleService();
+    }
+    @Bean
+    public IUserRoleService userRoleService(){
+        return new User_RoleService();
     }
 }
