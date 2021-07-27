@@ -30,6 +30,8 @@ com/codegym/service/food/IFoodService.java
  com.codegym.service.food.IFoodService
 com/codegym/repository/IRestaurantRepository.java
  com.codegym.repository.IRestaurantRepository
+com/codegym/repository/IUserRepository.java
+ com.codegym.repository.IUserRepository
 com/codegym/service/tag/ITagService.java
  com.codegym.service.tag.ITagService
 com/codegym/service/type/TypeService.java
