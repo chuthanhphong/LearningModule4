@@ -1,5 +1,7 @@
 package com.codegym.config;
 
+import com.codegym.service.food.FoodService;
+import com.codegym.service.food.IFoodService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -118,5 +120,10 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         ResourceBundleMessageSource messageSource=new ResourceBundleMessageSource();
         messageSource.setBasename("validation-message");
         return messageSource;
+    }
+
+    @Bean
+    public IFoodService foodService(){
+     return new FoodService();
     }
 }
