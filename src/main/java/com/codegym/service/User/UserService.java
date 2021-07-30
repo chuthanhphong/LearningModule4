@@ -1,6 +1,7 @@
 package com.codegym.service.User;
 
 import com.codegym.model.User;
+import com.codegym.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,24 +9,24 @@ import java.util.Optional;
 @Service
 public class UserService implements IUserService {
     @Autowired
-    private IUserService userService;
+    private IUserRepository userRepository;
     @Override
     public Iterable<User> findAll() {
-       return userService.findAll();
+       return userRepository.findAll();
     }
 
     @Override
     public Optional<User> findById(Long id) {
-        return userService.findById(id);
+        return userRepository.findById(id);
     }
 
     @Override
     public void save(User user) {
-    userService.save(user);
+    userRepository.save(user);
     }
 
     @Override
     public void delete(Long id) {
-        userService.delete(id);
+        userRepository.deleteById(id);
     }
 }

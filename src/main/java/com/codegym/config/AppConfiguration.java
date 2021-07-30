@@ -67,7 +67,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views"); // tiền tố
+        templateResolver.setPrefix("/WEB-INF/views");
         templateResolver.setSuffix(".html"); // hậu tố
         templateResolver.setTemplateMode(TemplateMode.HTML); // kiểu views
         templateResolver.setCharacterEncoding("UTF-8"); // định dạng chữ

@@ -33,8 +33,9 @@ public class UserController {
     }
     @GetMapping("/list")
     public ModelAndView showListUser() {
+        Iterable<User> users = userService.findAll();
         ModelAndView modelAndView = new ModelAndView("/User/list");
-      modelAndView.addObject("users",userService.findAll());
+      modelAndView.addObject("users",users);
         return modelAndView;
     }
     @GetMapping("/edit-user/{id}")
