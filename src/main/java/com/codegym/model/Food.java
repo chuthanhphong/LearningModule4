@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Table(name = "food")
 public class Food {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String image;

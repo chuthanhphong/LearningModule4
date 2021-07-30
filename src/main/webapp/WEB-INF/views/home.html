@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head">
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div th:replace="/layout::top"></div>
+  <div th:replace="/layout::menu"></div>
+  <div class="row mt-3">
+    <div th:replace="/layout::taskbar"></div>
+    <div class="col-7">
+      <div class="row">
+        <div class="col-4" th:each="food: ${foods}">
+          <div class="card" style="width: 18rem;">
+            <img th:src="@{'/image/'+${food.image}}" class="card-img-top" alt="..." style="width: 100px; height: 100px">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${food.restaurant.name}"></h5>
+              <p class="card-text" th:text="${food.restaurant.address}"></p>
+              <a href="/foods/info" class="btn btn-primary">Go</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div th:replace="/layout::adv"></div>
+  </div>
+  <div th:replace="/layout::footer"></div>
+</div>
+
+</body>
+</html>
