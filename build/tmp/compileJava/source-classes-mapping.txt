@@ -8,14 +8,14 @@ com/codegym/service/price/IPriceService.java
  com.codegym.service.price.IPriceService
 com/codegym/service/restaurant/IRestaurantService.java
  com.codegym.service.restaurant.IRestaurantService
-com/codegym/model/OrderDetail.java
- com.codegym.model.OrderDetail
-com/codegym/service/food/FoodService.java
- com.codegym.service.food.FoodService
+com/codegym/repository/IDiscountRepository.java
+ com.codegym.repository.IDiscountRepository
+com/codegym/model/Restaurant.java
+ com.codegym.model.Restaurant
 com/codegym/model/Price.java
  com.codegym.model.Price
-com/codegym/model/Food.java
- com.codegym.model.Food
+com/codegym/repository/IPriceRepository.java
+ com.codegym.repository.IPriceRepository
 com/codegym/model/User_role.java
  com.codegym.model.User_role
 com/codegym/service/price/PriceService.java
@@ -36,8 +36,8 @@ com/codegym/service/type/TypeService.java
  com.codegym.service.type.TypeService
 com/codegym/config/AppConfiguration.java
  com.codegym.config.AppConfiguration
-com/codegym/controller/FoodController.java
- com.codegym.controller.FoodController
+com/codegym/controller/PriceController.java
+ com.codegym.controller.PriceController
 com/codegym/model/Discount.java
  com.codegym.model.Discount
 com/codegym/model/User.java
@@ -50,19 +50,19 @@ com/codegym/service/discount/DiscountService.java
  com.codegym.service.discount.DiscountService
 com/codegym/service/tag/TagService.java
  com.codegym.service.tag.TagService
-com/codegym/model/Order.java
- com.codegym.model.Order
+com/codegym/service/food/FoodService.java
+ com.codegym.service.food.FoodService
 com/codegym/model/Type.java
  com.codegym.model.Type
 com/codegym/repository/ITagRepository.java
  com.codegym.repository.ITagRepository
 com/codegym/config/AppInit.java
  com.codegym.config.AppInit
-com/codegym/model/Restaurant.java
- com.codegym.model.Restaurant
-com/codegym/repository/IDiscountRepository.java
- com.codegym.repository.IDiscountRepository
-com/codegym/controller/PriceController.java
- com.codegym.controller.PriceController
-com/codegym/repository/IPriceRepository.java
- com.codegym.repository.IPriceRepository
+com/codegym/model/Food.java
+ com.codegym.model.Food
+com/codegym/controller/FoodController.java
+ com.codegym.controller.FoodController
+com/codegym/model/OrderDetail.java
+ com.codegym.model.OrderDetail
+com/codegym/model/Order.java
+ com.codegym.model.Order
