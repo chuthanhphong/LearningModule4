@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Delete discount</h1>
+<h2>Are you sure?</h2>
+<a href="/discounts/">list discount</a>
+
+<form th:action="@{/discounts/edit-discount/}" th:object="${discount}" method="post">
+  <input th:type="hidden" name="id" th:field="*{id}">
+  <table>
+    <tr>
+      <td> code:</td>
+      <td th:text="${discount.code}"></td>
+    </tr>
+    <tr>
+      <td> usages:</td>
+      <td th:text="${discount.usages}"></td>
+    </tr>
+    <td><input type="submit" value="Delete discount"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
