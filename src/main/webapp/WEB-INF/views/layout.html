@@ -9,18 +9,18 @@
 </head>
 <body>
 <div class="container">
-    <div class="row mt-3" th:fragment="top">
-        <div class="col-3 text-center">
-            Logo
-        </div>
-        <div class="col-9 text-center">
-            Banner
-        </div>
-    </div>
+<!--    <div class="row mt-3" th:fragment="top">-->
+<!--        <div class="col-3 text-center">-->
+<!--            <img src="/image/logo.jpg" alt="" style="width: 100px;height: 100px">-->
+<!--        </div>-->
+<!--        <div class="col-9 text-center" style="background-color: blanchedalmond">-->
+
+<!--        </div>-->
+<!--    </div>-->
     <div class="row mt-3" th:fragment="menu">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#"><img src="/image/logo.jpg" alt="" style="width: 100px;height: 100px"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,13 +50,37 @@
                             <a class="nav-link" href="#">Thực phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" href="#" tabindex="-1"
+                               aria-disabled="true">Welcome + user</a>
                         </li>
+
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    <ul class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img
+                                src="https://image.flaticon.com/icons/png/128/1053/1053364.png"
+                                height="20" width="20">Login/Sign up</a>
+                    </ul>
+<!--                    <div class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"-->
+<!--                           data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                            <img src="" alt=""-->
+<!--                                 style="width: 35px; height: 35px;border-radius: 50%">-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li><a class="dropdown-item"-->
+<!--                                   href="#">Trang cá nhân</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Quản-->
+<!--                                lý nội dung</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Lịch sử hoạt động</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Viết bài</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Cài đặt</a></li>-->
+<!--                            <li><a class="dropdown-item" href="/logout">Sign out</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </div>
             </div>
         </nav>
