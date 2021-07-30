@@ -1,5 +1,6 @@
 package com.codegym.config;
 
+import com.codegym.formatter.LocalDateTimeFormatter;
 import com.codegym.service.discount.DiscountService;
 import com.codegym.service.discount.IDiscountService;
 import com.codegym.service.food.FoodService;
@@ -45,7 +46,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 @Configuration
 @EnableWebMvc
@@ -132,9 +132,6 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(("/image/**")).addResourceLocations("/assets/image/");
-//        registry.addResourceHandler("/image/**")
-//                .addResourceLocations("file:" + "/File Upload/");
-
     }
 
     @Bean(name = "multipartResolver")
@@ -142,6 +139,15 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setMaxUploadSizePerFile(52428800);
         return resolver;
+    }
+
+    //Cau hinh formatter
+
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        LocalDateTimeFormatter localDatetimeFormatter=new LocalDateTimeFormatter("yyyy-MM-dddd HH:mm:ss");
+        registry.addFormatter(localDatetimeFormatter);
     }
 
     //Cấu hình messageSource

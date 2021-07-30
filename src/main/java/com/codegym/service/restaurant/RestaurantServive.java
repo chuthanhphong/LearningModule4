@@ -22,6 +22,11 @@ public class RestaurantServive implements IRestaurantService {
     }
 
     @Override
+    public Optional<Restaurant> findByName(String name) {
+        return restaurantRepository.findByName(name);
+    }
+
+    @Override
     public void save(Restaurant restaurant) {
         restaurantRepository.save(restaurant);
     }

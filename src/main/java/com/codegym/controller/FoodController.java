@@ -8,6 +8,8 @@ import com.codegym.service.restaurant.IRestaurantService;
 import com.codegym.service.tag.ITagService;
 import com.codegym.service.type.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/foods")
@@ -40,6 +43,13 @@ public class FoodController {
 
     @Autowired
     ITypeService typeService;
+
+    @GetMapping("/api")
+    public ResponseEntity<Food> getAll(){
+        List<Food> foods= (List<Food>) foodService.findAll();
+        if(foods.isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(foods,HttpStatus.OK);
+    }
 
     @GetMapping("")
     public ModelAndView showList(){
