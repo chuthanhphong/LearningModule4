@@ -5,7 +5,6 @@ import com.codegym.repository.IFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -22,13 +21,13 @@ public class FoodService implements IFoodService{
     }
 
     @Override
-    public Slice<Food> findAll(Slice slice) {
-        return foodRepository.findAll(slice);
+    public Page<Food> findAll(Pageable pageable) {
+        return foodRepository.findAll(pageable);
     }
 
     @Override
-    public Page<Food> findAll(Pageable pageable) {
-        return foodRepository.findAll(pageable);
+    public Page<Food> findAllByRestaurantName(String name, Pageable pageable) {
+        return foodRepository.findAllByRestaurantName(name, pageable);
     }
 
     @Override

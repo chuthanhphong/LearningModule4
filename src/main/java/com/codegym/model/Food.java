@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -52,7 +54,6 @@ public class Food {
         this.preference = 0;
         this.createdDate = LocalDateTime.now();
         this.modifiedDate = LocalDateTime.now();
-
     }
 
     public Long getId() {
@@ -119,6 +120,7 @@ public class Food {
         this.preference = preference;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
@@ -126,7 +128,7 @@ public class Food {
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }

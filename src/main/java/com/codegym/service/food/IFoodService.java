@@ -8,5 +8,5 @@ import org.springframework.data.domain.Slice;
 
 public interface IFoodService extends IGeneralService<Food> {
     Page<Food> findAll(Pageable pageable);
-    Slice<Food> findAll(Slice slice);
+    Page<Food> findAllByRestaurantName(String name, Pageable pageable);
 }

@@ -54,7 +54,7 @@ import java.util.Properties;
 @EnableSpringDataWebSupport
 @ComponentScan("com.codegym.controller")
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
-    private ApplicationContext applicationContext; // khai báo 1 spring container
+    private ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -65,10 +65,10 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views"); // tiền tố
-        templateResolver.setSuffix(".html"); // hậu tố
-        templateResolver.setTemplateMode(TemplateMode.HTML); // kiểu views
-        templateResolver.setCharacterEncoding("UTF-8"); // định dạng chữ
+        templateResolver.setPrefix("/WEB-INF/views");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
     @Bean
@@ -81,7 +81,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
-        viewResolver.setCharacterEncoding("UTF-8");// định dạng chữ
+        viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
     //5 hàm tiếp theo cấu hình JPA
@@ -95,7 +95,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.codegym.model"); // cấp cấp vị trí các model mà EntityManager cần tạo
+        em.setPackagesToScan("com.codegym.model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -106,10 +106,10 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver"); // loại driver đang dùng
-        dataSource.setUrl("jdbc:mysql://localhost:3306/MD4_order"); // csdl đang dùng
-        dataSource.setUsername("root"); // tài khoản sql
-        dataSource.setPassword("123456"); // mật khẩu sql
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/MD4_order");
+        dataSource.setUsername("root");
+        dataSource.setPassword("123456");
         return dataSource;
     }
 
@@ -122,8 +122,8 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
     public Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update"); // hỗ trợ upload cấu trúc bảng
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect"); // loại csdl là MySQL5
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
 
@@ -187,6 +187,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public IDiscountService discountService(){
         return new DiscountService();
     }
+
     @Bean
     public ITypeService typeService(){
         return new TypeService();

@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/foods")
 @CrossOrigin("*")
 public class FoodController {
@@ -45,11 +45,12 @@ public class FoodController {
     @Autowired
     ITypeService typeService;
 
-//    @GetMapping("/api")
-//    public ResponseEntity<Iterable<Food>> getAll(){
-//        Iterable<Food> foods= foodService.findAll();
-//        return new ResponseEntity(foods,HttpStatus.OK);
-//    }
+    @GetMapping("/api")
+
+    public ResponseEntity<Iterable<Food>> getAll(){
+        Iterable<Food> foods= foodService.findAll();
+        return new ResponseEntity(foods,HttpStatus.OK);
+    }
 
     @GetMapping("")
     public ModelAndView showList(@PageableDefault(size = 5 )Pageable pageable){
@@ -57,16 +58,6 @@ public class FoodController {
         modelAndView.addObject("foods",foodService.findAll(pageable));
         return modelAndView;
     }
-
-//    @GetMapping("")
-//    public ModelAndView showList(){
-//        List<Food> foods= (List<Food>) foodService.findAll();
-//        ModelAndView modelAndView=new ModelAndView("/food/list");
-//        modelAndView.addObject("foods",foods);
-//        return modelAndView;
-//    }
-
-
 
     @RequestMapping("/create")
     public ModelAndView showCreateForm(){
@@ -93,6 +84,4 @@ public class FoodController {
         foodService.save(food);
         return "redirect:/foods";
     }
-
-
 }
