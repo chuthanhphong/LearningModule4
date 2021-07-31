@@ -1,0 +1,58 @@
+<!DOCTYPE>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="/layout::menu"></div>
+    <div class="row mt-3">
+        <div class="col-5"><img th:src="@{'/image/'+${restaurant.image}}" alt="" style="width: 100%"></div>
+        <div class="col-7"> Restaurant Information</div>
+    </div>
+    <div class="row mt-3">
+        <div th:replace="/layout::taskbar">
+            Type food
+        </div>
+        <div class="col-7">
+            <div class="row mt-3">
+                <div class="row mt-3">Code giảm giá</div>
+                <div style="margin: 3px">
+                    <button>Search</button>
+                    <input type="text" id="searchByName">
+                </div>
+                <div th:each="food:${foods}">
+                    <div class="row mt-2">
+                        <div class="col-2"><img th:src="@{'/image/'+${food.image}}" alt="" style="width: 100px; height: 100px"></div>
+                        <div class="col-7">
+                            <a th:href="@{/foods/__${food.id}__/edit}" style="text-decoration: none"><b><p th:text="${food.name}"></p></b></a>
+                            <p th:text="${food.note}"></p>
+                            <span>Đã được đặt </span> <span th:text="${food.quantityOrder}"></span>lần | View <span th:text="${food.quantityView}"></span>
+                        </div>
+                        <div class="col-2">
+                            <p th:text="${food.price.originPrice}"></p>
+                            <p th:text="${food.price.discountPrice}"></p>
+                        </div>
+                        <div class="col-1"><button>+</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a th:href="@{'/foods'(page=${foods.number - 1})}" th:if="${foods.hasPrevious()}">Previous</a>
+                    <span th:text="${foods.number + 1}"></span>/<span th:text="${foods.totalPages}"></span>
+                    <a th:href="@{'/foods'(page=${foods.number + 1})}" th:if="${foods.hasNext()}">Next</a>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="/layout::adv">
+            Giỏ hàng
+        </div>
+    </div>
+    <div th:replace="/layout::footer"></div>
+</div>
+
+</body>
+</html>

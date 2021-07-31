@@ -26,6 +26,11 @@ public class FoodService implements IFoodService{
     }
 
     @Override
+    public Page<Food> findAllByRestaurantNameAndTypeName(String restaurantName, String typeName, Pageable pageable) {
+        return foodRepository.findAllByRestaurantNameAndTypeName(restaurantName, typeName, pageable);
+    }
+
+    @Override
     public Page<Food> findAllByRestaurantName(String name, Pageable pageable) {
         return foodRepository.findAllByRestaurantName(name, pageable);
     }

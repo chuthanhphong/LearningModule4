@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface IFoodRepository extends PagingAndSortingRepository<Food,Long> {
     Page<Food> findAll(Pageable pageable);
     Page<Food> findAllByRestaurantName(String name, Pageable pageable);
+    Page<Food> findAllByRestaurantNameAndTypeName(String restaurantName,String typeName,Pageable pageable);
 }
