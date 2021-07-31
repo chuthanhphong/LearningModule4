@@ -2,8 +2,8 @@ com/codegym/formatter/PriceFormatter.java
  com.codegym.formatter.PriceFormatter
 com/codegym/formatter/TagFormatter.java
  com.codegym.formatter.TagFormatter
-com/codegym/service/restaurant/RestaurantServive.java
- com.codegym.service.restaurant.RestaurantServive
+com/codegym/converter/RestaurantConverter.java
+ com.codegym.converter.RestaurantConverter
 com/codegym/repository/ITypeRepository.java
  com.codegym.repository.ITypeRepository
 com/codegym/model/Role.java
@@ -16,12 +16,12 @@ com/codegym/service/restaurant/IRestaurantService.java
  com.codegym.service.restaurant.IRestaurantService
 com/codegym/model/OrderDetail.java
  com.codegym.model.OrderDetail
-com/codegym/service/food/FoodService.java
- com.codegym.service.food.FoodService
+com/codegym/config/AppInit.java
+ com.codegym.config.AppInit
 com/codegym/model/Price.java
  com.codegym.model.Price
-com/codegym/model/Food.java
- com.codegym.model.Food
+com/codegym/repository/IPriceRepository.java
+ com.codegym.repository.IPriceRepository
 com/codegym/model/User_role.java
  com.codegym.model.User_role
 com/codegym/service/price/PriceService.java
@@ -44,8 +44,8 @@ com/codegym/service/type/TypeService.java
  com.codegym.service.type.TypeService
 com/codegym/config/AppConfiguration.java
  com.codegym.config.AppConfiguration
-com/codegym/controller/FoodController.java
- com.codegym.controller.FoodController
+com/codegym/repository/IDiscountRepository.java
+ com.codegym.repository.IDiscountRepository
 com/codegym/formatter/DiscountFormatter.java
  com.codegym.formatter.DiscountFormatter
 com/codegym/model/Discount.java
@@ -66,15 +66,15 @@ com/codegym/model/Type.java
  com.codegym.model.Type
 com/codegym/repository/ITagRepository.java
  com.codegym.repository.ITagRepository
-com/codegym/config/AppInit.java
- com.codegym.config.AppInit
+com/codegym/model/Food.java
+ com.codegym.model.Food
 com/codegym/model/Restaurant.java
  com.codegym.model.Restaurant
-com/codegym/repository/IDiscountRepository.java
- com.codegym.repository.IDiscountRepository
-com/codegym/converter/RestaurantConverter.java
- com.codegym.converter.RestaurantConverter
+com/codegym/service/restaurant/RestaurantServive.java
+ com.codegym.service.restaurant.RestaurantServive
+com/codegym/controller/FoodController.java
+ com.codegym.controller.FoodController
+com/codegym/service/food/FoodService.java
+ com.codegym.service.food.FoodService
 com/codegym/formatter/RestaurantFormatter.java
  com.codegym.formatter.RestaurantFormatter
-com/codegym/repository/IPriceRepository.java
- com.codegym.repository.IPriceRepository
