@@ -26,7 +26,7 @@
                     <div class="row mt-2">
                         <div class="col-2"><img th:src="@{'/image/'+${food.image}}" alt="" style="width: 100px; height: 100px"></div>
                         <div class="col-7">
-                            <b><p th:text="${food.name}"></p></b>
+                            <a th:href="@{/foods/__${food.id}__/edit}" style="text-decoration: none"><b><p th:text="${food.name}"></p></b></a>
                             <p th:text="${food.note}"></p>
                             <span>Đã được đặt </span> <span th:text="${food.quantityOrder}"></span>lần | View <span th:text="${food.quantityView}"></span>
                         </div>

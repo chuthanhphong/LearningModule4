@@ -10,7 +10,7 @@
     <div class="row mt-3">
         <div th:replace="/layout::taskbar"></div>
         <div class="col-7 p-3" style="border: 1px solid; border-radius: 5px">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" th:action="@{/foods/__${food.id}__/edit}" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="${food.name}">

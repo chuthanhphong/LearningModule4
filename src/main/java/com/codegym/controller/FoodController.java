@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +26,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/foods")
-@CrossOrigin("*")
 public class FoodController {
     @Autowired
     IFoodService foodService;
@@ -51,6 +51,37 @@ public class FoodController {
     public ResponseEntity<Iterable<Food>> getAll(){
         Iterable<Food> foods= foodService.findAll();
         return new ResponseEntity(foods,HttpStatus.OK);
+    }
+
+    @GetMapping("/api/{id}")
+    public ResponseEntity<Food> findById(@PathVariable Long id){
+        Optional<Food> food=foodService.findById(id);
+        if(!food.isPresent()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(food.get(),HttpStatus.OK);
+    }
+
+    @PostMapping("/api")
+    public ResponseEntity<Food> createFoodApi(@RequestBody Food food){
+        foodService.save(food);
+        return new ResponseEntity<>(food,HttpStatus.CREATED);
+    }
+
+    @PutMapping("/api/{id}")
+    public ResponseEntity<Food> updateFoodApi(@PathVariable Long id,@RequestBody Food food){
+        Optional<Food> foodOptional=foodService.findById(id);
+        if(!foodOptional.isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        food.setId(foodOptional.get().getId());
+        foodService.save(food);
+        return new ResponseEntity<>(food,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/api/{id}")
+    public ResponseEntity<Food> deleteFoodApi(@PathVariable Long id){
+        Optional<Food> foodOptional=foodService.findById(id);
+        if(!foodOptional.isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        foodService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
     @GetMapping("")
@@ -93,7 +124,6 @@ public class FoodController {
         ModelAndView modelAndView=new ModelAndView("/food/search-restaurant");
         modelAndView.addObject("foods",foodPage);
         modelAndView.addObject("restaurant",restaurant);
-
         return modelAndView;
     }
 
