@@ -8,23 +8,24 @@ import com.codegym.service.restaurant.IRestaurantService;
 import com.codegym.service.tag.ITagService;
 import com.codegym.service.type.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 @RequestMapping("/foods")
+@CrossOrigin("*")
 public class FoodController {
     @Autowired
     IFoodService foodService;
@@ -44,19 +45,28 @@ public class FoodController {
     @Autowired
     ITypeService typeService;
 
-    @GetMapping("/api")
-    public ResponseEntity<Food> getAll(){
-        List<Food> foods= (List<Food>) foodService.findAll();
-        if(foods.isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        return new ResponseEntity(foods,HttpStatus.OK);
-    }
+//    @GetMapping("/api")
+//    public ResponseEntity<Iterable<Food>> getAll(){
+//        Iterable<Food> foods= foodService.findAll();
+//        return new ResponseEntity(foods,HttpStatus.OK);
+//    }
 
     @GetMapping("")
-    public ModelAndView showList(){
+    public ModelAndView showList(@PageableDefault(size = 5 )Pageable pageable){
         ModelAndView modelAndView=new ModelAndView("/food/list");
-        modelAndView.addObject("foods",foodService.findAll());
+        modelAndView.addObject("foods",foodService.findAll(pageable));
         return modelAndView;
     }
+
+//    @GetMapping("")
+//    public ModelAndView showList(){
+//        List<Food> foods= (List<Food>) foodService.findAll();
+//        ModelAndView modelAndView=new ModelAndView("/food/list");
+//        modelAndView.addObject("foods",foods);
+//        return modelAndView;
+//    }
+
+
 
     @RequestMapping("/create")
     public ModelAndView showCreateForm(){
@@ -78,6 +88,8 @@ public class FoodController {
             e.printStackTrace();
         }
         food.setImage(fileName);
+        food.setCreatedDate(LocalDateTime.now());
+        food.setModifiedDate(LocalDateTime.now());
         foodService.save(food);
         return "redirect:/foods";
     }

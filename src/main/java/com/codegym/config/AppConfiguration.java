@@ -1,6 +1,6 @@
 package com.codegym.config;
 
-import com.codegym.formatter.LocalDateTimeFormatter;
+import com.codegym.formatter.*;
 import com.codegym.service.discount.DiscountService;
 import com.codegym.service.discount.IDiscountService;
 import com.codegym.service.food.FoodService;
@@ -148,6 +148,11 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public void addFormatters(FormatterRegistry registry) {
         LocalDateTimeFormatter localDatetimeFormatter=new LocalDateTimeFormatter("yyyy-MM-dddd HH:mm:ss");
         registry.addFormatter(localDatetimeFormatter);
+        registry.addFormatter(new DiscountFormatter(applicationContext.getBean(discountService().getClass())));
+        registry.addFormatter(new PriceFormatter(applicationContext.getBean(priceService().getClass())));
+        registry.addFormatter(new RestaurantFormatter(applicationContext.getBean(restaurantService().getClass())));
+        registry.addFormatter(new TagFormatter(applicationContext.getBean(tagService().getClass())));
+        registry.addFormatter(new TypeFormatter(applicationContext.getBean(typeService().getClass())));
     }
 
     //Cấu hình messageSource

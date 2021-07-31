@@ -28,14 +28,7 @@
                     <label for="exampleInputEmail4" class="form-label">Prepared time (minutes)</label>
                     <input type="number" class="form-control" name="preparedTime" id="exampleInputEmail4" aria-describedby="emailHelp">
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail5" class="form-label">Created date</label>
-                    <input type="date" class="form-control" name="createdDate" id="exampleInputEmail5" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail7" class="form-label">Modified date</label>
-                    <input type="date" class="form-control" name="modifiedDate" id="exampleInputEmail7" aria-describedby="emailHelp">
-                </div>
+
                 <div class="mb-3">
                     <label for="exampleInputEmail8" class="form-label">Restaurant</label>
                     <a href="/restaurants/create" style="text-decoration: none">+</a>
@@ -45,7 +38,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail9" class="form-label">Price</label>
-                    <a href="/prices/create" id="exampleInputEmail9" style="text-decoration: none">+</a>
+                    <select name="price" id="exampleInputEmail9" class="form-control">
+                        <option th:each="price:${prices}" th:value="${price.id}" th:text="${price.id}"></option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail10" class="form-label">Tag</label>
@@ -55,14 +50,24 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail11" class="form-label">Discount</label>
-                    <a href="/discount/create" id="exampleInputEmail11" style="text-decoration: none" >+ </a>
+                    <select name="discount" id="exampleInputEmail11" class="form-control">
+                        <option th:each="discount:${discounts}" th:value="${discount.id}" th:text="${discount.code}"></option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail12" class="form-label">Type</label>
-                    <select name="tag" id="exampleInputEmail12" class="form-control">
+                    <select name="type" id="exampleInputEmail12" class="form-control">
                         <option th:each="type:${types}" th:value="${type.id}" th:text="${type.name}"></option>
                     </select>
                 </div>
+<!--                <div class="mb-3">-->
+<!--                    <label for="exampleInputEmail5" class="form-label">Created date</label>-->
+<!--                    <input type="date" class="form-control" name="createdDate" id="exampleInputEmail5" aria-describedby="emailHelp">-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="exampleInputEmail7" class="form-label">Modified date</label>-->
+<!--                    <input type="date" class="form-control" name="modifiedDate" id="exampleInputEmail7" aria-describedby="emailHelp">-->
+<!--                </div>-->
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
