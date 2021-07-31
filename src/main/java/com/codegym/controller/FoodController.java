@@ -47,6 +47,11 @@ public class FoodController {
     @Autowired
     ITypeService typeService;
 
+    @ModelAttribute("food")
+    public Food initFood(){
+        return new Food();
+    }
+
     @GetMapping("/api")
     public ResponseEntity<Iterable<Food>> getAll(){
         Iterable<Food> foods= foodService.findAll();
@@ -141,7 +146,7 @@ public class FoodController {
         return modelAndView;
     }
     @PostMapping("/{id}/edit")
-    public String update(Food food, @PathVariable Long id, @RequestParam MultipartFile file, BindingResult result){
+    public String update(@PathVariable Long id,@ModelAttribute("food") Food food,  @RequestParam MultipartFile file, BindingResult result){
         String fileName= file.getOriginalFilename();
         try {
             FileCopyUtils.copy(file.getBytes(),new File("/assets/image/"+fileName));
@@ -149,11 +154,27 @@ public class FoodController {
             e.printStackTrace();
         }
         food.setId(id);
-        if(fileName.equals("")) food.setImage(foodService.findById(id).get().getImage());
-        else food.setImage(fileName);
+        if(!fileName.equals("")) food.setImage(fileName);
+        else {
+            food.setImage(foodService.findById(id).get().getImage());
+        }
         food.setCreatedDate(foodService.findById(id).get().getCreatedDate());
         food.setModifiedDate(LocalDateTime.now());
         foodService.save(food);
+        return "redirect:/foods";
+    }
+    @GetMapping("/{id}/delete")
+    public ModelAndView showDeleteForm(@PathVariable Long id){
+        Optional<Food> foodOptional=foodService.findById(id);
+        if(!foodOptional.isPresent()) throw new NullPointerException();
+        ModelAndView modelAndView=new ModelAndView("/food/delete");
+        modelAndView.addObject("food",foodOptional.get());
+        return modelAndView;
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteFood(@PathVariable Long id){
+        foodService.delete(id);
         return "redirect:/foods";
     }
 
