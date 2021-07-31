@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalTime;
 
@@ -55,7 +57,7 @@ public class Restaurant {
     public void setAddress(String address) {
         this.address = address;
     }
-
+    @JsonFormat(pattern = "HH:mm:ss")
     public LocalTime getOpenTime() {
         return openTime;
     }
@@ -63,7 +65,7 @@ public class Restaurant {
     public void setOpenTime(LocalTime openTime) {
         this.openTime = openTime;
     }
-
+    @JsonFormat(pattern = "HH:mm:ss")
     public LocalTime getCloseTime() {
         return closeTime;
     }

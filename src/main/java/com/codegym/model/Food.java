@@ -3,7 +3,9 @@ package com.codegym.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "food")
@@ -175,6 +177,18 @@ public class Food {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String createdTimeToString(){
+        String datetimePattern="yyyy-MM-dd HH:mm:ss";
+        return  this.createdDate.format(DateTimeFormatter.ofPattern(datetimePattern));
+    }
+    public LocalDate createdTimeToDate(){
+        return  this.createdDate.toLocalDate();
+    }
+    public String modifiedTimeToString(){
+        String datetimePattern="yyyy-MM-dd HH:mm:ss";
+        return  this.modifiedDate.format(DateTimeFormatter.ofPattern(datetimePattern));
     }
 }
 

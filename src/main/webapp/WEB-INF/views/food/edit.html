@@ -1,0 +1,79 @@
+<!DOCTYPE>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="/layout::menu"></div>
+    <div class="row mt-3">
+        <div th:replace="/layout::taskbar"></div>
+        <div class="col-7 p-3" style="border: 1px solid; border-radius: 5px">
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="${food.name}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail2" class="form-label">Image</label>
+                    <input type="file" class="form-control" name="file" id="exampleInputEmail2" aria-describedby="emailHelp" th:field="${food.image}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail3" class="form-label">Note</label>
+                    <input type="text" class="form-control" name="note" id="exampleInputEmail3" aria-describedby="emailHelp" th:field="${food.note}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail4" class="form-label">Prepared time (minutes)</label>
+                    <input type="number" class="form-control" name="preparedTime" id="exampleInputEmail4" aria-describedby="emailHelp" th:field="${food.preparedTime}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail8" class="form-label">Restaurant</label>
+                    <a href="/restaurants/create" style="text-decoration: none">+</a>
+                    <select name="restaurant" id="exampleInputEmail8" class="form-control">
+                        <option th:each="restaurant:${restaurants}" th:value="${restaurant.id}" th:text="${restaurant.name}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail9" class="form-label">Price</label>
+                    <select name="price" id="exampleInputEmail9" class="form-control">
+                        <option th:each="price:${prices}" th:value="${price.id}" th:text="${price.id}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail10" class="form-label">Tag</label>
+                    <select name="tag" id="exampleInputEmail10" class="form-control">
+                        <option th:each="tag:${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail11" class="form-label">Discount</label>
+                    <select name="discount" id="exampleInputEmail11" class="form-control">
+                        <option th:each="discount:${discounts}" th:value="${discount.id}" th:text="${discount.code}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail12" class="form-label">Type</label>
+                    <select name="type" id="exampleInputEmail12" class="form-control">
+                        <option th:each="type:${types}" th:value="${type.id}" th:text="${type.name}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail13" class="form-label">Created time</label>
+                    <input type="text" class="form-control" name="createdTime" id="exampleInputEmail13" aria-describedby="emailHelp" th:value="${food.createdTimeToString()}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail14" class="form-label">Modified time</label>
+                    <input type="text" class="form-control" name="modifiedTime" id="exampleInputEmail14" aria-describedby="emailHelp" th:value="${food.modifiedTimeToString()}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+        <div th:replace="/layout::adv"></div>
+    </div>
+    <div th:replace="/layout::footer"></div>
+</div>
+
+</body>
+</html>

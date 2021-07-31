@@ -12,14 +12,16 @@
         <div class="col-7">
             <div class="row">
                 <div class="col-4" th:each="food: ${foods}">
-                    <div class="card" style="width: 18rem;">
-                        <img th:src="@{'/image/'+${food.image}}" class="card-img-top" alt="..." style="width: 100px; height: 100px">
+                    <a th:href="@{'/foods/search/'+${food.restaurant.name}}" style="text-decoration: none">
+                    <div class="card" style="width: 18rem; margin: 5px; border-radius: 5px; padding: 5px;">
+                        <img th:src="@{'/image/'+${food.image}}" class="card-img-top" alt="..." width="100px" height="100px">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${food.restaurant.name}"></h5>
                             <p class="card-text" th:text="${food.restaurant.address}"></p>
-                            <a href="/foods/info" class="btn btn-primary">Go</a>
+                            <p>Giảm món</p>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -30,7 +32,6 @@
                 </div>
             </div>
         </div>
-
         <div th:replace="/layout::adv"></div>
     </div>
     <div th:replace="/layout::footer"></div>
